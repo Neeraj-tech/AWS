@@ -1,0 +1,33 @@
+aws installtion
+$ apt-get install awscli
+$ aws configure                                         #Run this command to quickly set and view your credentials
+$ aws configure --profile default
+$ ~/.aws/config
+$ ~/.aws/credentials
+$ aws configure list                                  #To list all configuration data
+
+# Below some s3 Cli
+$ aws s3 mb <target> [--options]                  #Create a bucket
+$ aws s3 ls <target> [--options]                  #List buckets and objects
+$ aws s3 rb <target> [--options]                  #Delete buckets
+$ aws s3 rm  <target> [--options]                 #Delete objects
+$ aws s3 mv <source> <target> [--options]         #Move objects
+$ aws s3 cp <source> <target> [--options]         #Copy objects
+$ aws s3 sync <source> <target> [--options]       #Sync objects
+$ aws s3 rm s3://my-bucket/path --recursive       #deletes s3://my-bucket/path and all of its contents.
+
+
+
+role_session_name                                 #Specifying a role session name for easier auditing
+
+$ aws s3 ls --profile marketingadmin              # the following calls the Amazon S3 ls command using the permissions attached to the marketingadmin role
+
+$ export AWS_PROFILE=marketingadmin               #To use the role for several calls, set role as envionment variable
+$ rm -r ~/.aws/cli/cache                          #If your role's temporary credentials are revoked, they are not renewed automatically, and attempts to use them fail. However, you can delete the cache to force the AWS CLI to retrieve new credentials.
+
+#Sources  https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html
+$ aws configure set region us-west-2 --profile integ  #command sets the region in the profile named integ.
+$ aws configure get region --profile integ            #command retrieves the region setting in the profile named integ.
+
+#AWS CLI Configuration Variables                  https://docs.aws.amazon.com/cli/latest/topic/config-vars.html
+#How to Mount S3 Bucket on CentOS and Ubuntu using S3FS, may refer: https://www.interserver.net/tips/kb/mount-s3-bucket-centos-ubuntu-using-s3fs/
